@@ -1,13 +1,820 @@
+/* * {
+  box-sizing: border-box;
+} */
+
 body {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1, h2, h3, p, nav a, cite, label {
+  font-family: "Calibri";
+  text-transform: uppercase;
+}
+
+p, h3, label {
+  font-size: small;
+}
+
+h3 {
+  letter-spacing: 0.5px;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.wrap {
+  flex-flow: wrap;
+}
+
+.center {
+  align-items: center;
+}
+
+.full-size {
+  width: 100%;
+  margin: auto;
+  align-self: center;
+}
+
+.mobile-nav, .mobile-nav-list {
+  display: none;
+}
+
+.contact-us {
+  position: fixed;
+  top: 12em;
+  -moz-box-shadow: 0 0 5px 3px #A5A5C7;
+  -webkit-box-shadow: 0 0 5px 3px #a5a5c7;
+  box-shadow: 0 0 5px 3px #a5a5c7;
+  z-index: 0;
+}
+
+.contact-us img {
+  display: block;
+}
+
+.main-header {
+  padding: 1.3em 0;
+  font-size: small;
+  text-align: center;
+}
+
+.main-header h2 {
+  margin: 0;
+}
+
+.header-info {
+  display: inline-block;
+  margin: auto;
+}
+
+.description {
+  letter-spacing: 4px;
+}
+
+.contact {
+  margin-bottom: 0.4em;
+  font-family: "Calibri";
+}
+
+.contact span {
+  margin: 0 0.32em;
+}
+
+.contact a {
+  color: black;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.contact a:hover {
+  color: #4f34b3;
+}
+
+.main-header, footer nav {
+  margin: auto;
+  width: 72%;
+  max-width: 940px;
+}
+
+.header-nav, footer {
+  background-color: #303080;
+  padding: 0.32em;
+}
+
+header h2, .header-nav a {
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: normal;
+} 
+
+.header-nav a {
+  letter-spacing: 2px;
+  font-size: larger;
+}
+
+nav a {
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  opacity: 1;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  opacity: 0.7;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+header ul {
+  margin: 0.32em;
+  text-align: center;
+}
+
+header li {
+  display: inline;
+  margin: 0 0.65em;
+}
+
+.main-content, .secondary-content {
+  background-color: #ECEBFF;
+  margin: 1.3em auto;
+  padding: 0.975em;
+  width: 70%;
+  max-width: 940px;
+}
+
+.main-image {
+  width: 64%;
+}
+
+.main-image img {
+  width: 95%;
+}
+
+.main-text {
+  width: 34%;
+}
+
+.main-text p {
+  line-height: 1.4em;
+}
+
+.secondary-text {
+  flex: 1;
+  margin-top: 1.3em;
+  width: 30%;
+  border-top: 2px solid #303080;
+  text-align: center;
+}
+
+.secondary-text:nth-of-type(2) {
+  margin-left: 1.3em;
+  margin-right: 1.3em;
+}
+
+.secondary-text img {
+  padding-top: 0.85em;
+}
+
+footer ul {
+  display: inline-flex;
+  flex-flow: column wrap;
+  align-content: flex-start;
+  width: 100%;
+  height: 95px;
+}
+
+footer li {
+  margin-right: 2.6em;
+}
+
+footer ul li:last-child {
+  margin-top: auto;
+}
+
+/* Index */
+
+.welcome {
+  letter-spacing: 3px;
+  margin-top: 0;
+  color: #303080;
+}
+
+.secondary-text {
+  overflow: hidden;
+  height: 12.5em;
+}
+
+.testimonials {
+  min-width: 33%;
+  font-size: larger;
+  margin-right: 1.3em;
+}
+
+.testimonials a {
+  text-decoration: none;
+}
+
+.testimonials a:active, .testimonials cite {
+  color: black;
+}
+
+.testimonials blockquote {
+  text-align: center;
+}
+
+.testimonials blockquote p, .testimonials blockquote cite {
+  margin-top: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-weight: normal;
+  font-size: larger;
+  letter-spacing: 0.1em;
+  line-height: 100%;
+}
+
+.testimonials blockquote cite {
+  font-size: large;
+}
+
+.testimonials blockquote span:first-child {
+  font-family: 'Times New Roman';
+  font-size: 4em;
+  position: relative;
+  top: 0.3em;
+  color: #A496FF;
+}
+
+.testimonials blockquote span:last-child {
+  font-family: 'Times New Roman';
+  font-size: 6em;
+  opacity: 0.4;
+  color: #A496FF;
+  vertical-align: middle;
+  float: right;
+  padding-top: 0.4em;
+}
+
+/* ---- Slideshows ---- */
+
+#slide-img, #slide-text {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
+#slide-img.fadeOut, #slide-text.fadeOut {
+  opacity: 0;
+}
+
+/* ---- About Us ---- */
+
+.about-text {
+  width: 40%;
+}
+
+.about-image {
+  width: 57%;
+}
+
+.quote {
+  margin-bottom: 0.65em;
+  width: 50%;
+}
+
+blockquote {
+  margin: 0.65em;
+}
+
+.about-text p, blockquote p {
+  line-height: 1.4em;
+  color: #3a3a87;
+}
+
+blockquote p {
+  font-size: medium;
+}
+
+cite {
+  font-style: normal;
+  font-weight: bold;
+}
+
+/* ---- Our Work ---- */
+
+.work-examples {
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.work-examples p {
+  font-size: medium;
+}
+
+.work-examples a {
+  display: block;
+  margin: 0.5em auto;
+  color: #303080;
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: xx-large;
+  text-shadow: 1px 1px black;
+  transition: 0.2s;
+}
+
+.work-examples a:hover {
+  color: #C4C2CC;
+}
+
+/* ---- Residential / Industrial ---- */
+
+.accordion-container {
+  margin: 0 auto;
+  width: 90%;
+  text-align: center;
+}
+
+.accordion-container li {
+  border-top: 1px solid white;
+  border-bottom: 1px solid #c7deef;
+}
+
+.accordion-container li:first-child {
+  border-top: none;
+}
+
+.accordion-container li:last-child {
+  border-bottom: none;
+}
+
+.accordion {
+  position: relative;
+  overflow: hidden;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 2em 0em;
+  text-align: left;
+  transition: 0.4s;
+  font-size: x-small;
+}
+
+.accordion:after { /* inadvertently pushes text to left/off-center, needs fix */
+  content: url(./img/down.png);
+  position: relative;
+  left: 6%;
+  float: right;
+  transition: all 0.2s ease-in-out;
+}
+
+.accordion:hover {
+  color: #1693eb;
+}
+
+.accordion:hover:after {
+  left: 0%;
+  transition: left 0.2s ease-in-out;
+}
+
+.active:after {
+  transform: rotate(180deg);
+  transition: all 0.2s ease-in-out;
+}
+
+.active:hover:after {
+  transform: rotate(180deg);
+  transition: all 0.2s ease-in-out;
+}
+
+.panel {
+  text-align: left;
+  overflow: hidden;
+  transition: all 1s ease;
+}
+
+.panel img {
+  width: 150px;
+  margin: 1.3em 0.65em;
+}
+
+.panel a {
+  text-decoration: none;
+}
+
+.accordion, .panel {
+  width: 100%;
+  background-color: #ECEBFF;
+}
+
+/* ---- Contact Us ---- */
+
+.contact-info p, .contact-info li, .contact-form h2 {
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.contact-info p, .contact-info li {
+  color: #303080;
+  font-size: large;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+}
+
+.contact-info {
+  width: 40%;
+  padding: 1.3em;
+}
+
+.contact-info li {
+  margin-bottom: 0.65em;
+}
+
+.contact-info a {
+  font-family: "Calibri";
+  color: black;
+  text-decoration: none;
+  transition: 0.3s;
+  font-weight: normal;
+  letter-spacing: normal;
+}
+
+.contact-info a:hover {
+  color: #4f34b3;
+}
+
+.contact-form {
+  width: 60%;
+  background-color: #c9d0de;
+  color: #445668;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.contact-form h2 {
+  font-size: xx-large;
+  letter-spacing: 0.1em;
+  margin: 0;
+  margin-top: 0.5em;
+}
+
+label {
+  display: block;
+  margin-left: auto;
+  margin-bottom: 0.65em;
+}
+
+textarea {
+  vertical-align: top;
+  resize: none;
+  height: 6em;
+}
+
+input, textarea {
+  width: 60%;
+  outline: none;
+  padding: 0.2em 0;
+}
+
+input, textarea, .contact-form button {
+  border: none;
+  margin-left: 0.65em;
+}
+
+.contact-form button {
+  margin: 1em 0em 1em 1em;
+  padding: 0.5em 4em;
+  border-radius: 8px;
+}
+
+fieldset {
+  border: none;
+  text-align: right;
+  margin: 1.3em;
+  padding: 0;
+}
+
+/* ---- Sitemap ---- */
+
+.sitemap li {
+  margin-bottom: 1.3em;
+}
+
+.sitemap a {
+  color: black;
+  font-weight: normal;
+}
+
+/* ---- Small Desktop ---- */
+
+@media only screen and (max-width: 1200px) {
+
+  .main-header {
+    flex-flow: wrap;
+    justify-content: center;
+  }
+
+  .main-text p {
+    line-height: normal;
+  }
+
+  .secondary-text {
+    overflow: hidden;
+    height: auto;
+  }
+
+  .box-3 {
+    display: none;
+  }
+
+  .secondary-text:nth-of-type(2) {
+    margin-right: 0;
+  }
+
+}
+
+/* ---- Smaller Desktop ---- */
+
+@media only screen and (max-width: 1000px) {
+
+  .main-image, .main-image img, .main-text, 
+  .about-image, .about-image img, .about-text, .quote {
+    width: 100%;
+  }
+
+  .main-text, .areas, .about-text, .accordion, .panel, .contact-page {
+    text-align: center;
+  }
+
+  .flex-container {
+    flex-flow: wrap;
+    justify-content: center;
+  }
+
+  .no-wrap {
+    flex-flow: nowrap;
+  }
+
+  .welcome {
+    margin-top: 0.5em;
+  }
+
+  .areas {
+    max-width: 50%;
+  }
+
+  .about-image {
+    display: none;
+  }
+
+  .contact-info {
+    text-align: center;
+  }
+
+  .contact-form {
+    width: 100%;
+  }
+
+  fieldset {
+    text-align: center;
+    padding: 0.5em;
+  }
+
+  label {
+    display: block;
+    margin: 1em 0.5em 0.5em 0.5em;
+    text-align: left;
+  }
+
+  .contact-info {
+    width: auto;
+    padding: 0;
+  }
+
+  input, textarea {
+    display: block;
+    margin: 0.5em auto;
+    width: 85%;
+    font-family: "Calibri";
+  }
+
+  .contact-form button {
+    width: 95%;
+    margin: 1em auto;
+  }
+
+  .flex-button {
+    display: flex;
+    justify-content: flex-end;
+    flex-flow: wrap;
+  }
+
+  .switch {
+    order: 1;
+  }
+
+}
+
+/* ---- Large Mobile ---- */
+
+@media only screen and (max-width: 680px) {
+
+  .main-header {
+    width: auto;
+  }
+
+  .accordion:after {
+    left: 10%;
+  }
+
+}
+
+/* ---- Small Mobile ---- */
+
+@media only screen and (max-width: 480px) {
+
+  /* ---- Mobile Navigation ---- */
+
+  .main-header {
+    padding-top: 100px;
+  }
+
+  .mobile-nav {
+    display: block;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+    text-align: right;
+  }
+
+  .mobile-nav-header {
+    background-color: #303080;
+    border-bottom: 4px solid #8186f3;
+    padding: 0.5em;
+  }
+
+  .mobile-nav-header button {
+    padding: 0;
+    padding-left: 0.4em;
+    background-color: #303080;
+    border-style: none;
+    border-left: 1px solid #28286e;
+  }
+
+  .mobile-nav-header button:active img {
+    opacity: 0.75;
+    background-color: #1a1a53;
+    border-radius: 5px;
+  }
+
+  .mobile-nav-header img {
+    vertical-align: middle;
+  }
+
+  .mobile-nav-list {
+    background-color: #303080;
+    border-radius: 0.5em;
+    width: 75%;
+    margin: 0.5em;
+    margin-left: auto;
+    padding: 0.4em;
+    opacity: 0;
+    transition: 1s;
+  }
+
+  .mobile-nav-list li {
+    display: block;
+    border-bottom: 3px solid white;
+    font-size: 2.5em;
+    padding: 0.2em;
+  }
+
+  .mobile-nav-list a {
+    color: #CCE8FF;
+  }
+
+  .mobile-nav-list li:last-child {
+    border-bottom: none;
+  }
+
+  .show {
+    display: block;
+    opacity: 1;
+    transition: 1s;
+  }
+
+  /* ---- Layout ---- */
+
+  .main-header {
+    padding-bottom: 0;
+  }
+
+  .contact span {
+    display: inline-block;
+    font-size: 1.25em;
+  }
+
+  .main-content {
+    width: auto;
+  }
+
+  .main-text {
+    font-size: 1.25em;
+    margin-top: 1em;
+  }
+
+  .main-text p {
+    font-size: 0.75em;
+  }
+
+  .description, .header-nav, .contact-us, .secondary-text, 
+  .secondary-content, .work-examples p, .accordion:after,
+  .contact-info, .contact-form h2 {
+    display: none;
+  }
+
+  .welcome {
+    margin-top: 0;
+  }
+
+  .about-text p {
+    font-size: 1em;
+  }
+
+  .testimonial-content {
+    display: block;
+    width: auto;
+  }
+
+  .quote {
+    margin-bottom: 2em;
+  }
+
+  .quote:last-child {
+    margin-bottom: 1em;
+  }
+
+  .main-contact {
+    padding: 0;
+  }
+
+  .accordion {
+    font-size: medium;
+  }
+
+  label {
+    text-align: center;
+    font-size: xx-large;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  input, textarea {
+    width: 95%;
+    padding: 0.3em 0.1em;
+    font-size: 1em;
+  }
+
+  .contact-form button {
+    font-size: 2em;
+  }
+
+  footer ul {
+    display: block;
+    text-align: center;
+    height: auto;
+  }
+
+  footer li {
+    margin-top: 0.8em;
+    margin-right: 0em;
+  }
+
+  footer nav a {
+    font-size: 2em;
+  }
+
+  footer li:nth-child(1n + 6) {
+    display: none;
+  }
+
+}
+
+/* ---- Extra Small Mobile ---- */
+
+@media only screen and (max-width: 410px) {
+
+  fieldset {
+    margin: 1.3em 0;
+    padding: 0;
+  }
+
+  .contact-form button {
+    padding: 0.5em 0em;
+  }
+
 }
