@@ -1,10 +1,10 @@
-import {Link} from "@reach/router"
-import Navigation from "./Navigation.js";
-import MobileNavigation from "./MobileNavigation.js";
+import { Link } from '@reach/router';
+import { Navigation } from './Navigation.js';
+import { MobileNavigation } from './MobileNavigation.js';
 import logo from '../img/smallTitle.png';
 import contact from '../img/contact.png';
 
-const Header = () => {
+export const Header = () => {
     return (
         <header>
 
@@ -27,11 +27,9 @@ const Header = () => {
 
             <Navigation/>
 
-            { <div className="contact-us">
-                <Link to="/contact.html"><img src={contact} alt=""/></Link>
-            </div> }
+            <div className="contact-us">
+                <Link to="/contact"><img src={contact} alt=""/></Link>
+            </div>
 
         </header>
 )};
-
-export default Header;

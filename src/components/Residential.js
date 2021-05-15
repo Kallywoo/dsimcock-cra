@@ -1,7 +1,7 @@
-import Accordion from "./Accordion.js";
+import { Accordion } from './Accordion.js';
 import {residentialArray as array} from './WorkArrays.js';
 
-const Residential = () => {
+export const Residential = () => {
 
     return (
         <main>
@@ -13,5 +13,3 @@ const Residential = () => {
         </main>
     )
 };
-
-export default Residential;

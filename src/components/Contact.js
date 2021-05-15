@@ -1,6 +1,6 @@
-import ContactForm from './ContactForm.js';
+import { ContactForm } from './ContactForm.js';
 
-const Contact = () => {
+export const Contact = () => {
     return (
         <main>
             <div className="main-content main-contact">
@@ -25,5 +25,3 @@ const Contact = () => {
         </main>
     )
 };
-
-export default Contact;
