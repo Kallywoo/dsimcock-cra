@@ -1,22 +1,49 @@
 import { Link } from '@reach/router';
+import styled from 'styled-components';
 
 export const Sitemap = () => {
     return (
         <main>
-            <div className="main-content">
-                <nav className="sitemap">
-                    <ul>
-                        <li><Link to="/index">Home</Link></li>
-                        <li><Link to="/about">About Us</Link></li>
-                        <li><Link to="/work">Our Work</Link></li>
+            <MainContent>
+                <nav>
+                    <List>
+                        <ListItem><StyledLink to="/index">Home</StyledLink></ListItem>
+                        <ListItem><StyledLink to="/about">About Us</StyledLink></ListItem>
+                        <ListItem><StyledLink to="/work">Our Work</StyledLink></ListItem>
 
-                        <li><Link to="/residential">Residential Work</Link></li>
-                        <li><Link to="/industrial">Industrial Work</Link></li>
+                        <ListItem><StyledLink to="/residential">Residential Work</StyledLink></ListItem>
+                        <ListItem><StyledLink to="/industrial">Industrial Work</StyledLink></ListItem>
 
-                        <li><Link to="/contact">Contact Us</Link></li>
-                    </ul>
+                        <ListItem><StyledLink to="/contact">Contact Us</StyledLink></ListItem>
+                    </List>
                 </nav>
-            </div>
+            </MainContent>
         </main>
     )
 };
+
+const MainContent = styled.div`
+    background-color: #ECEBFF;
+    margin: 1.3em auto;
+    padding: 0.975em;
+    width: 70%;
+    max-width: 940px;
+
+    @media only screen and (max-width: 480px) {
+        width: auto;
+    }
+`;
+
+const List = styled.ul`
+    padding: 0;
+    list-style-type: none;
+`;
+
+const ListItem = styled.li`
+    margin-bottom: 1.3em;
+`;
+
+const StyledLink = styled(Link)`
+    color: black;
+    font-weight: normal;
+`;
