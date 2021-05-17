@@ -1,7 +1,7 @@
 import { images } from './Images.js';
 import { useState, useEffect } from 'react';
 
-const ImageCarousel = () => {
+export const ImageCarousel = () => {
 
     const [currentIndex, setIndex] = useState(0);
     const [fadeOut, setFade] = useState(false);
@@ -20,18 +20,10 @@ const ImageCarousel = () => {
 
     useEffect(() => {
 
-        let mounted = true;
+        handle = setTimeout(slideShow, 5000);
 
-        if (mounted) {
-            handle = setTimeout(slideShow, 5000);
-
-            return () => {
-                clearTimeout(handle);
-            }
-        }
-
-        return function cleanup() {
-            mounted = false;
+        return () => {
+            clearTimeout(handle);
         }
 
     });
@@ -72,5 +64,3 @@ const ImageCarousel = () => {
             </div>
         );
     };
-
-export default ImageCarousel;

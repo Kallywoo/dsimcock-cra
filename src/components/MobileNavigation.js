@@ -3,7 +3,7 @@ import { Link } from '@reach/router';
 
 import mobileNav from '../img/MobileNav.png';
 
-const MobileNavigation = () => {
+export const MobileNavigation = () => {
 
     const [open, setOpen] = useState(false);
 
@@ -20,18 +20,18 @@ const MobileNavigation = () => {
                     <img src={mobileNav} alt=""/>
                 </button>
             </div>
-            <div className={`${"mobile-nav-list"} ${open ? "show" : ""}`}>
-                <nav>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/about.html">About Us</Link></li>
-                        <li><Link to="/work.html">Our Work</Link></li>
-                        <li><Link to="/contact.html">Contact Us</Link></li>
-                    </ul>
-                </nav>
-            </div>
+            {open &&
+                <div className={"mobile-nav-list"}>
+                    <nav>
+                        <ul>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/about">About Us</Link></li>
+                            <li><Link to="/work">Our Work</Link></li>
+                            <li><Link to="/contact">Contact Us</Link></li>
+                        </ul>
+                    </nav>
+                </div>
+            }
         </div>
     )
 };
-
-export default MobileNavigation;

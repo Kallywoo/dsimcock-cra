@@ -39,7 +39,7 @@ h3 {
   align-self: center;
 }
 
-.mobile-nav, .mobile-nav-list {
+.mobile-nav {
   display: none;
 }
 
@@ -394,8 +394,8 @@ cite {
 
 .panel {
   text-align: left;
-  overflow: hidden;
-  transition: all 1s ease;
+  /* overflow: hidden; */
+  /* transition: all 1s ease; */
 }
 
 .panel img {
@@ -489,6 +489,11 @@ input, textarea, .contact-form button {
   margin: 1em 0em 1em 1em;
   padding: 0.5em 4em;
   border-radius: 8px;
+  cursor: pointer;
+}
+
+.contact-form button:active {
+  background-color: #adadad;
 }
 
 fieldset {
@@ -682,8 +687,6 @@ fieldset {
     margin: 0.5em;
     margin-left: auto;
     padding: 0.4em;
-    opacity: 0;
-    transition: 1s;
   }
 
   .mobile-nav-list li {
@@ -701,11 +704,11 @@ fieldset {
     border-bottom: none;
   }
 
-  .show {
+  /*.show {
     display: block;
     opacity: 1;
     transition: 1s;
-  }
+  } */
 
   /* ---- Layout ---- */
 

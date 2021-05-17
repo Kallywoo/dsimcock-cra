@@ -1,7 +1,7 @@
-import Accordion from "./Accordion.js";
+import { Accordion } from './Accordion.js';
 import {industrialArray as array} from './WorkArrays.js';
 
-const Industrial = () => {
+export const Industrial = () => {
     
     let keyInit = "acc-"
     let keyGen = 0;
@@ -16,5 +16,3 @@ const Industrial = () => {
         </main>
     )
 };
-
-export default Industrial;

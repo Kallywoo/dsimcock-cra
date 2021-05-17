@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import {Link} from '@reach/router';
+import { Link } from '@reach/router';
 
-const Testimonials = () => {
+export const Testimonials = () => {
 
     const quotes = [
         {
@@ -67,11 +67,9 @@ const Testimonials = () => {
 
     return (
         <div className="testimonials">
-            <Link to="/about.html#testimonials">
+            <Link to="/about#testimonials">
                 <blockquote id="slide-text" className={fadeOut ? "fadeOut" : ""}><p><span>“ </span>{quote}<span> ”</span></p> <cite>{author}</cite></blockquote>
             </Link>
         </div>
         );
     };
-
-export default Testimonials;

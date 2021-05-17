@@ -1,6 +1,6 @@
 import aboutPic from '../img/aboutpic.png';
 
-const About = () => {
+export const About = () => {
     return (
         <main>
             <div className="main-content">
@@ -34,5 +34,3 @@ const About = () => {
         </main>
     )
 };
-
-export default About;

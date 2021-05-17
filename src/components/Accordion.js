@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Accordion = ({children}) => {
+export const Accordion = ({children}) => {
 
     const [active, setActive] = useState(false);
 
@@ -19,13 +19,13 @@ const Accordion = ({children}) => {
     return (
         <>
             <button className={`${"accordion"} ${active ? "active" : ""}`} onClick={toggle}>{title}</button>
-            <div className={"panel"} style={active ? {maxHeight: document.body.scrollHeight + 'px'} : {maxHeight: '0px'}}>
-                {images.map((image, i) => <a key={"img-" + i} target="_blank" rel="noreferrer" href={image.src}>
-                    <img src={image.thumb} alt={image.alt}/>
-                </a>)}
-            </div>
+            {active &&
+                <div className={"panel"}>
+                    {images.map((image, i) => <a key={"img-" + i} target="_blank" rel="noreferrer" href={image.src}>
+                        <img src={image.thumb} alt={image.alt}/>
+                    </a>)}
+                </div>
+            }
         </>
     );
 };
-
-export default Accordion;
