@@ -1,4 +1,4 @@
-import { Link } from '@reach/router';
+import { Link, Match } from '@reach/router';
 import styled from 'styled-components';
 
 import { Navigation } from './Navigation.js';
@@ -27,9 +27,13 @@ export const Header = () => {
 
             <Navigation/>
 
-            <ContactUs>
-                <Link to="/contact"><ContactImage src={contact} alt=""/></Link>
-            </ContactUs>
+            <Match path="/contact">
+                {({ match }) => (
+                    <ContactUs visible={!match ? true : false}>
+                        <Link to="/contact"><ContactImage src={contact} alt=""/></Link>
+                    </ContactUs>
+                )}
+            </Match>
         </header>
 )};
 
@@ -102,6 +106,7 @@ const Details = styled.a`
 `;
 
 const ContactUs = styled.div`
+    display: ${props => props.visible ? "block" : "none"};
     position: fixed;
     top: 12em;
     -moz-box-shadow: 0 0 5px 3px #A5A5C7;
