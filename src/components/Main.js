@@ -8,7 +8,7 @@ export const Main = () => {
         <main>
             <MainContent>
                 <FlexBox>
-                    <Carousel type="img" duration="5000"/>
+                    <Carousel type="img" duration="5000" transition="500"/>
                     <MainText>
                         <Welcome>Welcome to<br/>D.Simcock & Son</Welcome>
                         <Text>We are a family run building and construction business based in Doncaster, established over 25 years ago.</Text>
@@ -32,7 +32,7 @@ export const Main = () => {
             </MainContent>
 
             <SecondaryContent>
-                <Carousel type="text" duration="6000"/>
+                <Carousel type="text" duration="6000" transition="500"/>
                 <Areas>
                     <TertiaryHeader>Residential</TertiaryHeader>
                     <p>We do work across various home projects. Whatever you need, from complete new builds or extensions, to interior renovations or room fittings, we will do it. We always take care with our finishes and have worked across a vast range of projects in our many years of work.</p>
