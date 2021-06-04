@@ -12,8 +12,8 @@ export const Footer = () => {
                     <ListItem><StyledLink to="/contact">Contact Us</StyledLink></ListItem>
                     <ListItem><StyledLink to="/about#testimonials">Testimonials</StyledLink></ListItem>
 
-                    <ListItem><StyledLink to="/residential">Residential Examples</StyledLink></ListItem>
-                    <ListItem><StyledLink to="/industrial">Industrial Examples</StyledLink></ListItem>
+                    <ListItem><StyledLink to="/work/residential">Residential Examples</StyledLink></ListItem>
+                    <ListItem><StyledLink to="/work/industrial">Industrial Examples</StyledLink></ListItem>
 
                     <ListItem><StyledLink to="/sitemap">Sitemap</StyledLink></ListItem>
                 </List>
