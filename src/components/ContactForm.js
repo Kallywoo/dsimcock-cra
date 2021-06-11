@@ -9,7 +9,7 @@ export const ContactForm = () => {
         name: "",
         email: "",
         message: "",
-    }
+    };
 
     const [values, setValues] = useState(initialValues);
 
@@ -20,17 +20,17 @@ export const ContactForm = () => {
             ...values,
             [name]: value,
         });
-    }
+    };
 
     const handleSubmit = e => {
         e.preventDefault();
 
         // whatever goes here for dealing w/ submitted things
-    }
+    };
 
-    const handleReset = e => {
+    const handleReset = () => {
         setValues(initialValues);
-    }
+    };
 
     return (
         <FormContainer>
@@ -49,7 +49,7 @@ export const ContactForm = () => {
                     <Label htmlFor="email">E-Mail Address:
                         <Input 
                             name="email" 
-                            type="text" 
+                            type="email" 
                             id="email" 
                             value={values.email} 
                             onChange={handleInputChange}
@@ -71,7 +71,7 @@ export const ContactForm = () => {
                 </Fields>
             </form>
         </FormContainer>
-    )
+    );
 };
 
 const FormContainer = styled.div`

@@ -5,95 +5,75 @@ import styled from 'styled-components';
 import { images } from './Images.js';
 import { quotes } from './Quotes.js';
 
-export const Carousel = ({type, duration}) => {
+export const Carousel = ({type, duration, transition}) => {
+    
+    const [fadeOut, setFadeOut] = useState(false);
 
-    const [currentIndex, setIndex] = useState(0);
-    const [fadeOut, setFade] = useState(false);
-
-    // images
+    const [index, setIndex] = useState(0);
     const [nextIndex, setNextIndex] = useState(1);
 
-    const [image, setImage] = useState();
-    const [title, setTitle] = useState();
-    const [alt, setAlt] = useState();
+    const [isMounted, setIsMounted] = useState(false);
+    const [isHovering, setIsHovering] = useState(false);
 
-    const [nextImage, setNextImage] = useState();
-
-    // quotes
-    const [quote, setQuote] = useState();
-    const [author, setAuthor] = useState();
-
-    let handle = "";
-        
     useEffect(() => {
-        slideShow(); // play once immediately
+        setIsMounted(true);
+
+        return () => setIsMounted(false);
     }, []);
 
     useEffect(() => {
 
-        handle = setTimeout(slideShow, duration);
+        let timeout = () => {};
 
-        return () => {
-            clearTimeout(handle);
-        }
+        if(isMounted) {
+            setFadeOut(false); // fades in
 
-    });
+            // variable to stop/kickstart timeouts again after mouseover - mouseleave
+            if(!isHovering) {
 
-    const slideShow = () => {
-        
-        setFade(true);
+                // while in faded-in (visible) state, wait for given duration
+                timeout = setTimeout(() => { // captures current timer id in a global container for pauseSlides & cleanup
+                    setFadeOut(true); // fades out
 
-        setTimeout(function() {
+                    // wait the time it takes to fade out, then swap
+                    setTimeout(() => {
 
-            //console.log(":(");
-            setFade(false);
+                        // while faded out (invisible), updates the index
+                        // in turn calling useEffect and repeating the cycle
+                        if((type === "img" && index !== images.length - 1) 
+                        || (type === "text" && index !== quotes.length - 1)) { 
+                            setIndex(index + 1);
+                        } else { setIndex(0); }
+                        
+                        if(nextIndex !== images.length - 1) {
+                            setNextIndex(nextIndex + 1);
+                        } else { setNextIndex(0); }
+                        
+                    }, transition);
 
-            if(type === "img") {
-                setImage(images[currentIndex].src);
-                setTitle(images[currentIndex].title);
-                setAlt(images[currentIndex].alt);
+                }, duration);
 
-                setNextImage(images[nextIndex].src);
-            } else if(type === "text") {
-                setQuote(quotes[currentIndex].quote);
-                setAuthor(quotes[currentIndex].author);
-            }
+            } else {
+                clearTimeout(timeout);
+            };
+        };
 
-        }, 500);
+        return () => clearTimeout(timeout);
 
-        setIndex(currentIndex + 1);
-        setNextIndex(nextIndex + 1);
-
-        if (nextIndex === images.length - 1)
-        { setNextIndex(0); }
-
-        if ((type === "img" && currentIndex === images.length - 1)
-        || (type === "text" && currentIndex === quotes.length - 1)) 
-        { setIndex(0); }
-    };
-    
-    const pauseSlides = () => {
-        //console.log(":)");
-        clearTimeout(handle);
-    };
-    
-    const resumeSlides = () => {
-        //console.log(":D");
-        handle = setTimeout(slideShow, duration);
-    };
+    }, [isMounted, isHovering, index, nextIndex, type, transition, duration]);
 
     if(type === "img") {
         return (
-            <ImageContainer onMouseEnter={pauseSlides} onMouseLeave={resumeSlides}>
+            <ImageContainer onMouseEnter={() => setIsHovering(true)} onMouseLeave={() => setIsHovering(false)}>
                 <Image 
                     id="slide-img" 
-                    src={image} 
-                    title={title} 
-                    alt={alt} 
+                    src={images[index].src} 
+                    title={images[index].title} 
+                    alt={images[index].alt} 
                     fade={fadeOut ? true : false}
                 />
                 <HiddenImage 
-                    src={nextImage} // loads the next image to prevent occasional delayed swap issue
+                    src={images[nextIndex].src} // loads the next image to prevent occasional delayed swap issue
                 />
             </ImageContainer>
         );
@@ -103,9 +83,9 @@ export const Carousel = ({type, duration}) => {
                 <StyledLink to="/about#testimonials">
                     <Blockquote id="slide-text" fade={fadeOut ? true : false}>
                         <Paragraph>
-                            <Span>“ </Span>{quote}<Span> ”</Span>
+                            <Span>“ </Span>{quotes[index].quote}<Span> ”</Span>
                         </Paragraph> 
-                        <Cite>{author}</Cite>
+                        <Cite>{quotes[index].author}</Cite>
                     </Blockquote>
                 </StyledLink>
             </QuoteContainer>
@@ -133,7 +113,8 @@ const Image = styled.img`
 `;
 
 const HiddenImage = styled.img`
-    display: none;
+    position: absolute;
+    left: -10000px;
 `
 
 const QuoteContainer = styled.div`

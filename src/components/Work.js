@@ -7,8 +7,8 @@ export const Work = () => {
             <MainContent>
                 <WorkExamples>
                     <Text>At D Simcock & Son we do work for both the residential and industrial sectors. Choose below to see examples of each.</Text>
-                    <StyledLink to="/residential">Residential</StyledLink>
-                    <StyledLink to="/industrial">Industrial</StyledLink>
+                    <StyledLink to="/work/residential">Residential</StyledLink>
+                    <StyledLink to="/work/industrial">Industrial</StyledLink>
                 </WorkExamples>
             </MainContent>
         </main>

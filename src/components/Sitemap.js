@@ -10,10 +10,8 @@ export const Sitemap = () => {
                         <ListItem><StyledLink to="/index">Home</StyledLink></ListItem>
                         <ListItem><StyledLink to="/about">About Us</StyledLink></ListItem>
                         <ListItem><StyledLink to="/work">Our Work</StyledLink></ListItem>
-
-                        <ListItem><StyledLink to="/residential">Residential Work</StyledLink></ListItem>
-                        <ListItem><StyledLink to="/industrial">Industrial Work</StyledLink></ListItem>
-
+                        <ListItem><StyledLink to="/work/residential">Residential Work</StyledLink></ListItem>
+                        <ListItem><StyledLink to="/work/industrial">Industrial Work</StyledLink></ListItem>
                         <ListItem><StyledLink to="/contact">Contact Us</StyledLink></ListItem>
                     </List>
                 </nav>
